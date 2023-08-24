@@ -1,0 +1,92 @@
+body {
+  background-image: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/089/641/original/rainbow.png?1689254312");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: "Chela One", cursive;
+}
+
+.currentWeather,
+.card1,
+.card2,
+.card3,
+.card4,
+.card5,
+.card6 {
+  border-radius: 30px;
+  color: #fff;
+  font-size: 12px;
+  display: block;
+  margin: 0 auto;
+  line-height: 22px;
+  padding: 0%;
+  box-shadow: rgba(37, 39, 89, 0.08) 0px 8px 8px 0;
+  text-align: center;
+  opacity: 90%;
+}
+
+.card1 {
+  border: 1px solid red;
+  background: red;
+}
+.card2 {
+  border: 1px solid #ed9421;
+  background: #ed9421;
+}
+.card3 {
+  border: 1px solid #f7ec14;
+  background: #f7ec14;
+}
+.card4 {
+  border: 1px solid #6abd45;
+  background: #6abd45;
+}
+.card5 {
+  border: 1px solid #3871ba;
+  background: #3871ba;
+}
+.card6 {
+  border: 1px solid #93288d;
+  background: #93288d;
+}
+
+p {
+  text-align: center;
+  font-family: monospace;
+}
+
+.currentPic {
+  width: 100px;
+  float: left;
+}
+.currentWeather {
+  background: #6fccdd;
+  border: 1px solid transparent;
+  border-radius: 30px;
+  color: whitesmoke;
+  padding: 0px;
+  margin: 120px;
+  text-align: center;
+  display: block;
+  font-size: 30px;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  font-weight: bold;
+}
+.currentWeather2 {
+  color: whitesmoke;
+  padding: 0px;
+  margin: 120px;
+  text-align: center;
+  display: block;
+  margin-block-start: 0.2em;
+  margin-block-end: 0.2em;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 12px;
+}
+.city,
+.temp,
+.today {
+  text-align: left;
+  padding: 10px;
+}
