@@ -3,180 +3,95 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <title>WeatherApp</title>
+    <title>Kishmira's Weather App</title>
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
       crossorigin="anonymous"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Chela+One&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
       rel="stylesheet"
     />
 
     <link rel="stylesheet" href="src/style.css" />
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
   </head>
   <body>
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <div class="currentWeather">
-            <div class="card-body">
-              <img
-                class="bgPic"
-                src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/090/226/original/sunandclounds.png.png?1689537358"
-                alt="sunandclouds"
-                width="300px"
-                opacity="80px"
-              />
-
-              <h3>
+    <div class="currentWeather">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-9">
+              <h1>
                 <span id="city">Johannesburg</span>
-              </h3>
-              <h5 id="date">Thu, 10th Dec, 2023</h5>
-              <h4 id="time">10:30</h4>
-              <h2><span class="temperature" id="temperature"> 18 </span> 
-      <span class="units">
-      <a href="#" id="celsius-link">°C</a> |
-      <a href="#" id="fahrenheit-link">°F</a></h2>
-              <img
-                class="current-icon"
-                src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/089/652/original/sunandcloud.png?1689258496"
-                alt="sunandcloud"
-                width="60px"
-              />
-            </div>
-            <div class="col">
-              <div class="currentWeather2">
-                <div class="card-body">
-                  <ul
-                    class="list-group list-group-horizontal"
-                    class="extraInfo"
-                  >
-                    <li class="list-group-item">
-                      Humidity: <span id="humidity"> 80 </span> %
-                    </li>
-                    <li class="list-group-item">
-                      Wind: <span id="wind"> 2.57 </span> km/h
-                    </li>
-                    <li class="list-group-item">
-                      <span id="description"> Sunny </span>
-                    </li>
-                  </ul>
+              </h1>
 
-                  <form class="d-flex" id="search-form">
-                    <input
-                      type="text"
-                      placeholder="Enter a city"
-                      autocomplete="off"
-                      autofocus="on"
-                      id="city-input"
-                    />
-                    <input type="submit" value="search" />
-                  </form>
-                  <button class="btn btn-outline-success" id="current-button">
-                    current
-                  </button>
+              <ul>
+                <li id="description">Description</li>
+                <li class="measures">Humidity:<span id="humidity"></span>%</li>
+                <li class="measures">Wind:<span id="wind"></span>km/h</li>
+              </ul>
+            </div>
+            <div class="col-3">
+              <div class="clearfix weather-temperature">
+                <img src="" alt="Clear" id="icon" class="float-left image" />
+
+                <div class="float-left">
+                  <strong class="temp" id="temperature"></strong
+                  ><span class="units"
+                    ><a href="#" id="celsius-link" class="active">°C</a> |
+                    <a href="#" id="fahrenheit-link">°F</a></span
+                  >
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="col">
-          <div class="card1">
-            <div class="card-body">
-              <h5 class="card-title">Mon</h5>
-              <img
-                src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/089/649/original/SUN.png?1689258462"
-                alt="sunny"
-                width="60px"
-              />
-              <p class="max"><strong>19℃</strong></p>
-              <p class="min">6℃</p>
+          <div class="weather-forecast" id="forecasting"></div>
+          <form id="search-form" class="mb-3">
+            <div class="row">
+              <div class="col-9">
+                <input
+                  class="form-control"
+                  type="search"
+                  id="city-input"
+                  placeholder="Search for a city..."
+                  autofocus="on"
+                  autocomplete="off"
+                />
+              </div>
+              <div class="col-3">
+                <input
+                  value="Search"
+                  type="submit"
+                  class="btn btn-light w-100"
+                />
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card2">
-            <div class="card-body">
-              <h5 class="card-title">Tue</h5>
-              <img
-                src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/089/649/original/SUN.png?16892584622"
-                alt="sunny"
-                width="60px"
-              />
-              <p class="max"><strong>20℃</strong></p>
-              <p class="min">5℃</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card3">
-            <div class="card-body">
-              <h5 class="card-title">Wed</h5>
-              <img
-                src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/089/650/original/CLOUDY.png?1689258472"
-                alt="cloudy"
-                width="60px"
-              />
-              <p class="max"><strong>19℃</strong></p>
-              <p class="min">4℃</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card4">
-            <div class="card-body">
-              <h5 class="card-title">Thu</h5>
-              <img
-                src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/089/651/original/rain_cloud.png?1689258482"
-                alt="rain_cloud"
-                width="60px"
-              />
-              <p class="max"><strong>15℃</strong></p>
-              <p class="min">4℃</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card5">
-            <div class="card-body">
-              <h5 class="card-title">Fri</h5>
-              <img
-                src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/089/651/original/rain_cloud.png?1689258482"
-                alt="rain_cloud"
-                width="60px"
-              />
-              <p class="max"><strong>12℃</strong></p>
-              <p class="min">4℃</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card6">
-            <div class="card-body">
-              <h5 class="card-title">Sat</h5>
-              <img
-                src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/089/652/original/sunandcloud.png?1689258496"
-                alt="sunandcloud"
-                width="60px"
-              />
-              <p class="max"><strong>15℃</strong></p>
-              <p class="min">6℃</p>
-            </div>
-          </div>
+          </form>
+          <ul>
+            <li class="date">
+              Last updated:
+              <span id="date"></span>
+            </li>
+          </ul>
         </div>
       </div>
-      <br />
-      <small><a href="https://github.com/Kishmira-Naicker/Rainbow-Weather-App" target="_blank">Open-source code</a>", by Kishmira Naicker"</small>
     </div>
+    <br />
+    <small>
+      This Weather App was coded by Kishmira Naicker & is available on
+      <a
+        class="link"
+        href="https://github.com/gmodel95/my-final-project-plus"
+        target="_blank"
+        >GitHub </a
+      >.
+    </small>
     <script src="src/index.js"></script>
   </body>
 </html>
